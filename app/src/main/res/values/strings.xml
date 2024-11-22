@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">云阅</string>
 
+    <string name="logcat_notify_content" translatable="false"> %s 正在运行</string>
+    <string name="logcat_notify_channel_name" translatable="false">前台服务 通知</string>
+    <string name="logcat_notify_channel_description" translatable="false">可用于查看当前应用程序</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

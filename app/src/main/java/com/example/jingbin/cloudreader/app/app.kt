@@ -1,6 +1,9 @@
 package com.example.jingbin.cloudreader.app
 
+import android.content.Intent
+import android.os.Build
 import com.example.jingbin.cloudreader.BuildConfig
+import com.example.jingbin.cloudreader.service.CloudReaderService
 import com.example.jingbin.cloudreader.utils.NightModeUtil
 import com.tencent.bugly.crashreport.CrashReport
 import me.jingbin.bymvvm.base.RootApplication
@@ -31,5 +34,13 @@ open class App : RootApplication() {
 //        HttpUtils.getInstance().init(this);
         NightModeUtil.initNightMode()
         CrashReport.initCrashReport(applicationContext, "3977b2d86f", BuildConfig.DEBUG)
+
+        //启动前台服务
+        val intent = Intent(this, CloudReaderService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(intent)
+        } else {
+            startService(intent)
+        }
     }
 }

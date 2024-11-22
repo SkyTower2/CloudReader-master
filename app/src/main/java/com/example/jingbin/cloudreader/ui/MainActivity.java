@@ -30,6 +30,7 @@ import com.example.jingbin.cloudreader.bean.wanandroid.CoinUserInfoBean;
 import com.example.jingbin.cloudreader.data.UserUtil;
 import com.example.jingbin.cloudreader.databinding.ActivityMainBinding;
 import com.example.jingbin.cloudreader.databinding.NavHeaderMainBinding;
+import com.example.jingbin.cloudreader.service.CloudReaderService;
 import com.example.jingbin.cloudreader.ui.menu.NavAboutActivity;
 import com.example.jingbin.cloudreader.ui.menu.NavAdmireActivity;
 import com.example.jingbin.cloudreader.ui.menu.NavDeedBackActivity;
@@ -465,9 +466,13 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         isLaunch = false;
         if (isClickCloseApp) {
             isClickCloseApp = false;
-            // 杀死该应用进程 需要权限; 如果不控制会影响切换深色模式重启
+            //杀死该应用进程 需要权限; 如果不控制会影响切换深色模式重启
             android.os.Process.killProcess(android.os.Process.myPid());
         }
+
+        //停止前台服务
+        Intent serviceIntent = new Intent(this, CloudReaderService.class);
+        stopService(serviceIntent);
     }
 
     public static void start(Context context) {

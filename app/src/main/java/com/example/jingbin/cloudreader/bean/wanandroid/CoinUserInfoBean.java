@@ -6,6 +6,11 @@ import androidx.databinding.Bindable;
 import com.example.jingbin.cloudreader.BR;
 
 public class CoinUserInfoBean extends BaseObservable {
+    /**
+     * 继承BaseObservable，实现数据绑定
+     * 表示这个类的实例是 可观察的，可以与 Data Binding 机制结合使用。
+     *
+     */
 
     /**
      * coinCount : 451
@@ -14,17 +19,22 @@ public class CoinUserInfoBean extends BaseObservable {
      * username : x**oyang
      */
 
-    private int coinCount;
-    private int rank;
-    private int userId;
-    // 有 **
-    private String username;
+    private int coinCount;//金币数量
+    private int rank;//排名
+    private int userId;//用户ID
+    private String username;//用户名（包含星号）
 
     @Bindable
     public int getCoinCount() {
         return coinCount;
     }
 
+    /**
+     * notifyPropertyChanged 是 BaseObservable 提供的方法，用于通知 Data Binding 系统，属性值发生了变化。
+     * 一旦调用此方法，绑定到 coinCount 的 UI 会自动刷新显示新的值
+     *
+     * @param coinCount
+     */
     public void setCoinCount(int coinCount) {
         this.coinCount = coinCount;
         notifyPropertyChanged(BR.coinCount);

@@ -131,6 +131,8 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
     private void initDrawerLayout() {
         bindingView.navView.inflateHeaderView(R.layout.nav_header_main);
         View headerView = bindingView.navView.getHeaderView(0);
+
+        //DataBindingUtil.bind 是 Android 数据绑定库中的一个静态方法，用于将视图与数据绑定对象进行绑定。
         bind = DataBindingUtil.bind(headerView);
         bind.setViewModel(viewModel);
         viewModel.isReadOk.set(SPUtils.isRead());

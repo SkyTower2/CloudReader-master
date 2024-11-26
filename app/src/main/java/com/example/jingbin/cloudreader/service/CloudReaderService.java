@@ -96,7 +96,7 @@ public class CloudReaderService extends Service {
         builder.setOngoing(true)
                 .setVisibility(Notification.VISIBILITY_PUBLIC); //锁屏显示完整通知
 
-        //将服务和通知绑定在一起，成为前台服务
+        //调用 startForeground，展示前台服务通知，将服务和通知绑定在一起，成为前台服务
         startForeground(BACKUP_SERVICE_NOTIFICATION_ID, builder.build());
         return super.onStartCommand(intent, flags, startId);
     }

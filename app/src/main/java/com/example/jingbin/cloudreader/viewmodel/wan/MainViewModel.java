@@ -23,8 +23,20 @@ import me.jingbin.bymvvm.room.User;
  * @data 2019/9/24
  * @Description 首页ViewModel
  */
-
 public class MainViewModel extends BaseViewModel {
+
+    /**
+     * ObservableField与MutableLiveData使用
+     * ObservableField：
+     * 线程不安全，不建议在多线程中直接使用。
+     * 适用于简单的数据绑定场景。
+     * 通知机制：当调用 set() 方法改变值时，通知绑定的 UI 组件更新。
+     * <p>
+     * MutableLiveData：
+     * 线程安全的，可以跨线程使用。
+     * 适用于更复杂的场景，特别是需要在多个组件之间共享数据或处理复杂业务逻辑的情况。
+     * 通知机制：通过 postValue()（子线程）或 setValue()（主线程）方法更新数据，并通知所有观察者。
+     */
 
     // 问题反馈是否已读
     public ObservableField<Boolean> isReadOk = new ObservableField<>();

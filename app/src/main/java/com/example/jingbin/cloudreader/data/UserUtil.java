@@ -78,6 +78,11 @@ public class UserUtil {
         return SPUtils.getBoolean(Constants.IS_LOGIN, false);
     }
 
+    /**
+     * 根据积分计算等级
+     * @param coinCount
+     * @return
+     */
     public static String getLevel(int coinCount) {
         return String.valueOf(coinCount / 100 + 1);
     }

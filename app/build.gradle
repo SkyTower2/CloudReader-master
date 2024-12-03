@@ -86,6 +86,18 @@ android {
         exclude 'META-INF/rxjava.properties'
     }
     namespace 'com.example.jingbin.cloudreader'
+
+    applicationVariants.configureEach { variant ->
+        // apk 输出文件名配置
+        variant.outputs.configureEach { output ->
+            // 获取版本号
+            def versionName = variant.versionName
+            // 格式化版本号，去除非数字字符
+            def formattedVersionName = versionName.replaceAll("[^\\d.]", "")
+            // 构建新的文件名
+            outputFileName = "${rootProject.getName()}_${formattedVersionName}.apk"
+        }
+    }
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
